@@ -1,0 +1,9 @@
+import cv2
+import os
+import sys
+
+#this is the code to crop the dataset
+img = cv2.imread("char.jpg")
+for row in range(0,img.shape[0],64):
+    for column in range(0,img.shape[0],128):
+        cv2.imwrite(f"img{row}_{column}.png",img[row:row+64, column:column+128,:])
