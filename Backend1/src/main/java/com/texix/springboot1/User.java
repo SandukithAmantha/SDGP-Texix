@@ -5,6 +5,26 @@ public class User {
     private String fName;
     private String lName;
     private String email;
+    private String password;
+
+    public User(String fName, String lName, String email, String password) {
+        this.fName = fName;
+        this.lName = lName;
+        this.email = email;
+        this.password = password;
+    }
+    public User() {
+
+    }
+
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
     public String getfName() {
         return fName;
