@@ -1,22 +1,45 @@
 package com.texix.springboot1;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import java.util.UUID;
+
 public class User {
 
+    private UUID id;
     private String fName;
     private String lName;
     private String email;
     private String password;
 
-    public User(String fName, String lName, String email, String password)   {
+    public User() {
+    }
+//    {
+//        "fName":"Sithiaj",
+//            "lName":"Nissara",
+//            "email":"Sitha@",
+//            "password":"sasasas"
+//    }
+
+    public User(@JsonProperty("id") UUID id,
+                @JsonProperty("fName") String fName,
+                @JsonProperty("lName") String lName,
+                @JsonProperty("email") String email,
+                @JsonProperty("password") String password) {
+        this.id = id;
         this.fName = fName;
         this.lName = lName;
         this.email = email;
         this.password = password;
     }
-    public User() {
 
+    public UUID getId() {
+        return id;
     }
 
+    public void setId(UUID id) {
+        this.id = id;
+    }
 
     public String getPassword() {
         return password;
