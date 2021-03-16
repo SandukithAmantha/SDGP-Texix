@@ -1,6 +1,8 @@
 package com.texix.springboot1;
 
 import org.springframework.beans.factory.annotation.Autowired;
+
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
@@ -11,9 +13,10 @@ import java.util.UUID;
 public class UserDataAccessService {
 
     List<User> arrayDb = new ArrayList<>();
+    private JdbcTemplate jdbcTemplate;
 
     public int insertUser(User user) {
-        arrayDb.add(new User(user.getId(), user.getfName(), user.getlName(), user.getEmail(), user.getPassword()));
+        arrayDb.add(new User(user.getId(), user.getfName(), user.getlName(), user.getEmail(), user.getPassword(), user.getType()));
         return 1;
     }
 
