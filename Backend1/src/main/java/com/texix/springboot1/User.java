@@ -11,7 +11,7 @@ public class User {
     private String lName;
     private String email;
     private String password;
-    private int type;
+    private int userType;
 
     public User() {
     }
@@ -42,16 +42,18 @@ public class User {
                 @JsonProperty("lName") String lName,
                 @JsonProperty("email") String email,
                 @JsonProperty("password") String password,
-                @JsonProperty("type") int type) {
+                @JsonProperty("userType") int userType) {
         this.id = id;
         this.fName = fName;
         this.lName = lName;
         this.email = email;
         this.password = password;
-        this.type = type;
+        this.userType = userType;
     }
 
     public UUID getId() {
+        UUID id = UUID.randomUUID();
+        //String uuidAsString = uuid.toString();
         return id;
     }
 
@@ -91,11 +93,11 @@ public class User {
         this.email = email;
     }
 
-    public int getType() {
-        return type;
+    public int getUserType() {
+        return userType;
     }
 
-    public void setType(int type) {
-        this.type = type;
+    public void setUserType(int userType) {
+        this.userType = userType;
     }
 }
