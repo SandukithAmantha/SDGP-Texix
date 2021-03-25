@@ -1,15 +1,33 @@
 import React, {useState} from 'react';
-import { View, Text, TouchableOpacity, Image, StyleSheet } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import FormInput from '../components/FormInput';
 import FormButton from '../components/FormButton';
 
 const Signup = ({navigation}) => {
+    const [fName, setFName] = useState();
+    const [lName, setLName] = useState();
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
     const [confirmPassword, setConfirmPassword] = useState();
     return(
         <View style={styles.container}>
             <Text style={styles.text}>Create an account</Text>
+            <FormInput 
+                labelValue={fName}
+                onChangeText={(userFName) => setFName(userFName)} 
+                placeholderText="First Name"
+                iconType="user"
+                autoCorrect={false}
+            />
+
+            <FormInput 
+                labelValue={lName}
+                onChangeText={(userLName) => setLName(userLName)} 
+                placeholderText="Last Name"
+                iconType="user"
+                autoCorrect={false}
+            />
+
             <FormInput 
                 labelValue={email}
                 onChangeText={(userEmail) => setEmail(userEmail)} 
@@ -19,6 +37,7 @@ const Signup = ({navigation}) => {
                 autoCapitalize="none"
                 autoCorrect={false}
             />
+
 
             <FormInput 
                 labelValue={password}
@@ -38,7 +57,7 @@ const Signup = ({navigation}) => {
 
             <FormButton 
                 buttonTitle="Sign Up"
-                onPress={() => alert('Sign Up Clicked!')}
+                onPress={() => navigation.navigate('Home')}
             />
             <View style={styles.textPrivate}>
             <Text style={styles.color_textPrivate}>By registering, you confirm that you accept our</Text>
@@ -61,7 +80,7 @@ export default Signup;
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: '#f9fafd',
+        backgroundColor: '#edc7b7',
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
