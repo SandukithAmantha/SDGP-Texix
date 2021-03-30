@@ -90,7 +90,7 @@ const styles = StyleSheet.create({
     developer: {
         fontSize: 13,
         color: '#FF8C00',
-        marginTop: 10``,
+        marginTop: 10,
     }
 
 });
