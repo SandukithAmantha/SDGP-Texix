@@ -45,6 +45,11 @@ const Login = ({navigation}) => {
                 onPress={() => navigation.navigate('SignUp')} >
                 <Text style={styles.navButtonText}>Don't have an account? Create here</Text>
             </TouchableOpacity>
+            
+            <TouchableOpacity
+                style={styles.forgotButton}>
+                <Text style={styles.developer}>©TEXIX</Text>
+            </TouchableOpacity>
         </View>
     );
 };
@@ -80,5 +85,12 @@ const styles = StyleSheet.create({
     
     forgotButton: {
         marginTop: 15,
+    },
+
+    developer: {
+        fontSize: 13,
+        color: '#FF8C00',
+        marginTop: 10``,
     }
+
 });
