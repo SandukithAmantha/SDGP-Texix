@@ -5,14 +5,17 @@ import FormButton from '../components/FormButton';
 const TeacherVersionScreen = ({navigation}) => {
     return(
         <View style={styles.container}>
-            <Text>Teacher Version</Text>
+            <Text style={styles.headerText}>Teacher Version</Text>
 
-            <FormButton buttonTitle="Upload an image" />
+            <FormButton 
+                buttonTitle="Upload an image"  
+            />
 
-            <TouchableOpacity  
+            <TouchableOpacity
+                style={styles.navigateText}  
                 onPress={() => navigation.navigate('StudentVersion')} >
                 <Text style={styles.navButtonText}>Not a teacher? Go for student version</Text>
-            </TouchableOpacity>
+                </TouchableOpacity>
         </View>
     );
 }
@@ -26,5 +29,16 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         padding: 20,
+    },
+
+    headerText: {
+        fontSize: 16,
+        fontWeight: 'bold',
+    },
+
+    navigateText: {
+        fontSize: 14,
+        fontWeight: 'bold',
+        marginTop: 20,
     },
 });

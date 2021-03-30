@@ -1,6 +1,7 @@
 import React from 'react';
 import { Text, View,TextInput,Image,Button, TouchableOpacity, StyleSheet, } from 'react-native';
 import FormButton from '../components/FormButton';
+import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
 
 const StudentVersionScreen = ({navigation}) => {
 
@@ -10,10 +11,11 @@ const StudentVersionScreen = ({navigation}) => {
 
             <FormButton 
                 buttonTitle="Upload an image" 
-                onPress={this.handleChoosePhoto} 
+                onPress={() =>this} 
             />
 
-            <TouchableOpacity  
+            <TouchableOpacity
+                style={styles.navigateText}  
                 onPress={() => navigation.navigate('TeacherVersion')} >
                 <Text style={styles.navButtonText}>Not a student? Go for teacher version</Text>
             </TouchableOpacity>
@@ -36,5 +38,12 @@ const styles = StyleSheet.create({
         fontSize: 16,
         fontWeight: 'bold',
     },
+
+    navigateText: {
+        fontSize: 14,
+        fontWeight: 'bold',
+        marginTop: 20,
+    },
+
 });
 

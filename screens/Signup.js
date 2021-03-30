@@ -72,6 +72,11 @@ const Signup = ({navigation}) => {
                 <Text style={styles.navButtonText}>Already have an account? Login here</Text>
             </TouchableOpacity>
 
+            <TouchableOpacity
+                style={styles.forgotButton}>
+                <Text style={styles.developer}>©TEXIX</Text>
+            </TouchableOpacity>
+
         </View>
     );
 };
@@ -112,4 +117,10 @@ const styles = StyleSheet.create({
         fontWeight: '400',
         color: 'grey',
     },
+
+    developer: {
+        fontSize: 13,
+        color: '#FF8C00',
+        marginTop: 20,
+    }
 });
