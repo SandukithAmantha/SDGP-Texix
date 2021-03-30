@@ -23,11 +23,12 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "package": "com.KiddoCheck"
     },
     "web": {
       "favicon": "./assets/favicon.png"
     },
-    "description": "Sinhala Handwritten Character Mistakes Finder"
+    "description": "Sinhala Handwritten Character Mistakes Finder from team TEXIX"
   }
 }

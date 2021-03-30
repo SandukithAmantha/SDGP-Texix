@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, Button, Image, StyleSheet } from 'react-native';
+import { Image, StyleSheet } from 'react-native';
 
 import Onboarding from 'react-native-onboarding-swiper';
 
@@ -11,15 +11,21 @@ const OnBoardingScreen = ({navigation}) => {
         pages={[
             {
             backgroundColor: '#a6e4d0',
-            image: <Image source={require('../assets/Picture3.png')} />,
+            image: <Image source={require('../assets/Picture3.png')} style={styles.image} />,
             title: 'Find Your Mistakes',
-            subtitle: 'A New Way To Find Your Handwritten Character Mistakes',
+            subtitle: 'A new way to find your handwritten character mistakes',
             },
             {
             backgroundColor: '#fdeb93',
-            image: <Image source={require('../assets/Picture4.png')} />,
+            image: <Image source={require('../assets/Picture4.png')} style={styles.image} />,
             title: 'Become The Star',
-            subtitle: 'Be The Smartest Student In The School',
+            subtitle: 'Be the star in the school with great hadnwritting',
+            },
+            {
+            backgroundColor: '#f08080',
+            image: <Image source={require('../assets/logo.png')} style={styles.image} />,
+            title: 'KIDDO CHECK',
+            subtitle: 'Sinhala handwritten character mistake finder',
             },
             
         ]}
@@ -34,6 +40,12 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
+    },
+
+    image : {
+        height: 200,
+        width: 220,
+        resizeMode: 'cover',
     },
 
 });
