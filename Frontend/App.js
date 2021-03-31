@@ -8,6 +8,7 @@ import Signup from './screens/Signup';
 import HomeScreen from './screens/HomeScreen';
 import StudentVersionScreen from './screens/StudentVersionScreens';
 import TeacherVersionScreen from './screens/TeacherVersionScreen';
+import Developer from './screens/Developer';
 
 const AppStack = createStackNavigator();
 
@@ -23,6 +24,7 @@ const App = () => {
         <AppStack.Screen name="Home" component={HomeScreen} />
         <AppStack.Screen name="StudentVersion" component={StudentVersionScreen} />
         <AppStack.Screen name="TeacherVersion" component={TeacherVersionScreen} />
+        <AppStack.Screen name="Developer" component={Developer} />
       </AppStack.Navigator>
     </NavigationContainer>
   );

@@ -74,7 +74,8 @@ const Signup = ({navigation}) => {
 
             <TouchableOpacity
                 style={styles.forgotButton}>
-                <Text style={styles.developer}>©TEXIX</Text>
+                <Text style={styles.developer}
+                onPress={() => navigation.navigate('Developer')} >©TEXIX</Text>
             </TouchableOpacity>
 
         </View>
