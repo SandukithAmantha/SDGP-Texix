@@ -2,7 +2,9 @@ import React, {useState} from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import FormInput from '../components/FormInput';
 import FormButton from '../components/FormButton';
-
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import axios from 'axios';
 const Signup = ({navigation}) => {
     const [fName, setFName] = useState();
     const [lName, setLName] = useState();
@@ -57,8 +59,22 @@ const Signup = ({navigation}) => {
 
             <FormButton 
                 buttonTitle="Sign Up"
-                onPress={() => navigation.navigate('Home')}
+                //onPress={() => navigation.navigate('Home')}  
+                onPress={() =>
+                    fetch('http://192.168.1.7:8080/register/user/post', {
+                        method: 'POST',
+                        headers: {'Content-Type': 'application/json'},
+                        body: JSON.stringify({
+                            fName: 'Boinn',
+                            lName: 'Plliams',
+                            email:'asaa@gmail.com',
+                            password:'lkllk',        
+                            userType: 0
+                        })
+                    })
+                }
             />
+            {/* console.log("localhost:8080/register/user/post"); */}
             <View style={styles.textPrivate}>
             <Text style={styles.color_textPrivate}>By registering, you confirm that you accept our</Text>
             <TouchableOpacity><Text style={[styles.color_textPrivate, {color: "#e88832"}]}>Terms of service</Text></TouchableOpacity>
@@ -76,6 +92,7 @@ const Signup = ({navigation}) => {
                 style={styles.forgotButton}>
                 <Text style={styles.developer}
                 onPress={() => navigation.navigate('Developer')} >©TEXIX</Text>
+                {/* <Text style={styles.developer}>©TEXIX</Text> */}
             </TouchableOpacity>
 
         </View>

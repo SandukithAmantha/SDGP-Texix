@@ -49,6 +49,8 @@ const Login = ({navigation}) => {
             <TouchableOpacity
                 style={styles.forgotButton}
                 onPress={() => navigation.navigate('Developer')} >
+                {/* style={styles.forgotButton} */}
+                
                 <Text style={styles.developer}>©TEXIX</Text>
             </TouchableOpacity>
         </View>
