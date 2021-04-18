@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.UUID;
 
-public class User {
+public class    User {
 
     private UUID id;
     private String fName;

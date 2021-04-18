@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@CrossOrigin(origins = {"http://192.168.1.7:19000/" })
+@CrossOrigin(origins = {"http://192.168.8.101:19002/" })
 @RestController
 //@RequestMapping("register/user")
 public class UserController {
@@ -24,7 +24,7 @@ public class UserController {
         userService.addUser(user);
     }
 
-    @GetMapping
+    @RequestMapping(value="register/user", method=RequestMethod.GET)
     public List<User> getAllUser() {
         return userService.getAllUser();
     }
