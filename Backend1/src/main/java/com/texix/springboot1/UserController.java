@@ -7,7 +7,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+
 @CrossOrigin(origins = {"http://192.168.43.219:19000/" })
+
 @RestController
 //@RequestMapping("register/user")
 public class UserController {
@@ -24,6 +26,7 @@ public class UserController {
     public void addUser(@RequestBody User user) {
         userService.addUser(user);
     }
+
 
 
     @RequestMapping(value="login/user/post", method=RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)

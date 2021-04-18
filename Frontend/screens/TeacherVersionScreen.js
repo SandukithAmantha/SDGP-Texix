@@ -1,15 +1,65 @@
 import React from 'react';
-import { Text, View,TextInput,Image,Button, TouchableOpacity, StyleSheet } from 'react-native';
+import { Text, View,TextInput,Image,Button, TouchableOpacity, StyleSheet, Alert, CameraRoll } from 'react-native';
 import FormButton from '../components/FormButton';
+import * as ImagePicker from 'expo-image-picker';
+import * as Permissions from 'expo-permissions';
+
+
+//Method for pick image fom gallery
+const pickFromGallery = async ()=>{
+    const {granted} = await Permissions.askAsync(Permissions.CAMERA_ROLL)
+    if(granted){
+        let data = await ImagePicker.launchImageLibraryAsync({
+            mediaTypes:ImagePicker.MediaTypeOptions.Images,
+            allowsEditing:true,
+            aspect:[1,1],
+            quality:0.5
+        })
+        console.log(data)   
+    }else{
+        Alert.alert.alert("Permission Blocked")
+    }    
+}
+//Method for pick images from Camera
+const pickFromCamera = async ()=>{
+    const {granted} = await Permissions.askAsync(Permissions.CAMERA)
+    if(granted){
+        let data = await ImagePicker.launchCameraAsync({
+            mediaTypes:ImagePicker.MediaTypeOptions.Images,
+            allowsEditing:true,
+            aspect:[1,1],
+            quality:0.5
+        })
+        console.log(data)
+    }else{
+        Alert.alert.alert("Permission Blocked")
+    }    
+}
+
+
 
 const TeacherVersionScreen = ({navigation}) => {
     return(
         <View style={styles.container}>
             <Text style={styles.headerText}>Teacher Version</Text>
 
+           
+
+            <Button
+            style={{fontSize: 20, color: 'green'}}
+            styleDisabled={{color: 'red'}}
+            onPress = {() => pickFromGallery}
+           
+            title="Gallery"
+            >
+             Press Me
+            </Button>
             <FormButton 
-                buttonTitle="Upload an image"  
+                buttonTitle="Cam" 
+                onPress={() =>pickFromCamera}
+                 
             />
+            
 
             <TouchableOpacity
                 style={styles.navigateText}  
@@ -19,6 +69,8 @@ const TeacherVersionScreen = ({navigation}) => {
         </View>
     );
 }
+
+
 
 export default TeacherVersionScreen;
 
