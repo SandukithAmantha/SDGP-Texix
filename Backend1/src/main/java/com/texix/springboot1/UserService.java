@@ -19,6 +19,11 @@ public class UserService {
         return userDataAccessService.insertUser(user);
     }
 
+    public User userLogin(User user) {
+        System.out.println("UserService - "+user.toString());
+        return userDataAccessService.loginUser(user);
+    }
+
     public List<User> getAllUser() {
         return userDataAccessService.selectAllUser();
     }

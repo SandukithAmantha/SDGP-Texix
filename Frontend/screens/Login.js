@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import { View, Text, TouchableOpacity, Image, StyleSheet } from 'react-native';
 import FormInput from '../components/FormInput';
 import FormButton from '../components/FormButton';
+import axios from 'axios';
 
 const Login = ({navigation}) => {
     const [email, setEmail] = useState();
@@ -33,7 +34,28 @@ const Login = ({navigation}) => {
 
             <FormButton 
                 buttonTitle="Sign In"
-                onPress={() => navigation.navigate('Home')} 
+                // onPress={() => navigation.navigate('Home')} 
+                onPress={() => {
+                    fetch('http://192.168.43.219:8080/login/user/post', {
+                    //fetch('http://localhost:8080/login/user/post', {
+                        method: 'POST',
+                        headers: {'Content-Type': 'application/json'},
+                        body: JSON.stringify({
+                            email: "sn@gmail.com",
+                            password: "hopsd"      
+                        })
+                    });
+                    fetch('http://192.168.43.219:8080/login/user/response')
+                        .then((response) => response.json() ,console.log("response.json"))
+                        .then((json) => {
+                            console.log("json");
+                          })
+                          .catch((error) => {
+                            console.error(error);
+                          });
+                    }
+                }
+                
             />
 
             <TouchableOpacity style={styles.forgotButton} onPress={() =>{}} >

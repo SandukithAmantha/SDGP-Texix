@@ -37,6 +37,13 @@ public class User {
 //            "type": 5
 //    }
 
+
+//    public User(@JsonProperty("email") String email,
+//                @JsonProperty("password") String password) {
+//        this.email = email;
+//        this.password = password;
+//    }
+
     public User(@JsonProperty("id") UUID id,
                 @JsonProperty("fName") String fName,
                 @JsonProperty("lName") String lName,
@@ -99,5 +106,17 @@ public class User {
 
     public void setUserType(int userType) {
         this.userType = userType;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", fName='" + fName + '\'' +
+                ", lName='" + lName + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", userType=" + userType +
+                '}';
     }
 }

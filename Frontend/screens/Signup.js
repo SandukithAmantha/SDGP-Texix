@@ -4,7 +4,8 @@ import FormInput from '../components/FormInput';
 import FormButton from '../components/FormButton';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import axios from 'axios';
+// import axios from 'axios';
+// import { event } from 'react-native-reanimated';
 const Signup = ({navigation}) => {
     const [fName, setFName] = useState();
     const [lName, setLName] = useState();
@@ -18,6 +19,7 @@ const Signup = ({navigation}) => {
                 labelValue={fName}
                 onChangeText={(userFName) => setFName(userFName)} 
                 placeholderText="First Name"
+                // value={this.state.userFName}
                 iconType="user"
                 autoCorrect={false}
             />
@@ -26,6 +28,7 @@ const Signup = ({navigation}) => {
                 labelValue={lName}
                 onChangeText={(userLName) => setLName(userLName)} 
                 placeholderText="Last Name"
+                // value={this.state.userLName}
                 iconType="user"
                 autoCorrect={false}
             />
@@ -34,6 +37,7 @@ const Signup = ({navigation}) => {
                 labelValue={email}
                 onChangeText={(userEmail) => setEmail(userEmail)} 
                 placeholderText="Email"
+                // value={this.state.userEmail}
                 iconType="user"
                 keyboardType="email-address"
                 autoCapitalize="none"
@@ -45,6 +49,7 @@ const Signup = ({navigation}) => {
                 labelValue={password}
                 onChangeText={(userPassword) => setPassword(userPassword)} 
                 placeholderText="Password"
+                // value={this.state.userPassword}
                 iconType="lock"
                 secureTextEntry={true}
             />
@@ -53,6 +58,7 @@ const Signup = ({navigation}) => {
                 labelValue={confirmPassword}
                 onChangeText={(userConfirmPassword) => setConfirmPassword(userPassword)} 
                 placeholderText="Confirm password"
+                //value={this.state.}
                 iconType="lock"
                 secureTextEntry={true}
             />
@@ -61,15 +67,16 @@ const Signup = ({navigation}) => {
                 buttonTitle="Sign Up"
                 //onPress={() => navigation.navigate('Home')}  
                 onPress={() =>
-                    fetch('http://192.168.1.7:8080/register/user/post', {
+                    fetch('http://192.168.43.219:8080/register/user/post', {
+                    //fetch('http://localhost:8080/register/user/post', {
                         method: 'POST',
                         headers: {'Content-Type': 'application/json'},
                         body: JSON.stringify({
-                            fName: 'Boinn',
-                            lName: 'Plliams',
-                            email:'asaa@gmail.com',
-                            password:'lkllk',        
-                            userType: 0
+                            fName: "Shane2",
+                            lName: "Pra2",
+                            email: "Sh2a@gami",
+                            password: "shane7933",          
+                            userType: 1
                         })
                     })
                 }
@@ -98,6 +105,25 @@ const Signup = ({navigation}) => {
         </View>
     );
 };
+
+// _jsonArrayClick = async () => {
+//     fetch('http://192.168.1.7:8080/register/user/post', {
+//         method: 'POST',
+//         headers: {'Content-Type': 'application/json'},
+//             body: JSON.stringify({
+//                 // fName: this.state.userFName,
+//                 // lName: this.state.userLName,
+//                 // email: this.state.userEmail,
+                // password: this.state.userPassword,
+                // fName: "Sandukith",
+                // lName: "Amanth",
+                // email: "San@gami",
+                // password: "san456",          
+                // userType: 1
+//             })
+//     })
+
+// }
 
 export default Signup;
 
