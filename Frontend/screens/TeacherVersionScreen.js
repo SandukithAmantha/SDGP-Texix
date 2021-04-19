@@ -35,6 +35,47 @@ const pickFromCamera = async ()=>{
         Alert.alert.alert("Permission Blocked")
     }    
 }
+openImagePicker = () => {
+    ImagePicker.showImagePicker(this.options, async response => {
+      this.setState({originUri: response.uri})
+      let timestamp = +new Date;
+      let fileName = timestamp + '_' + response.fileName;
+      if (response.didCancel) {
+          console.log('User cancelled image picker')
+          return
+      } else if (response.error) {
+          console.log('ImagePicker Error: ', response.error)
+          return
+      } else if (response.customButton) {
+          console.log('User tapped custom button: ', response.customButton)
+          return
+      } else {
+          const source = { uri: response.uri };
+          this.setState({
+            avatarSource: source,
+          });
+      }
+
+
+      let { height, width, quality, format, avatarSource } = this.state
+
+      // Resize and post the thumb 
+      const resizedImageUri = await ImageResizer.createResizedImage(
+          this.state.originUri,
+          this.state.height,
+          this.state.width,
+          this.state.format,
+          this.state.quality
+      ).then(({uri}) => {
+        let imageProperties = {
+          uri: uri,
+          name: fileName,
+          type: 'image/png',
+        }
+        this.props.onUpload(imageProperties);
+      })
+    })
+  }
 
 
 
@@ -56,7 +97,7 @@ const TeacherVersionScreen = ({navigation}) => {
             </Button>
             <FormButton 
                 buttonTitle="Cam" 
-                onPress={() =>pickFromCamera}
+                onPress={() =>openImagePicker}
                  
             />
             

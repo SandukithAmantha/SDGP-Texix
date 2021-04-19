@@ -34,27 +34,27 @@ const Login = ({navigation}) => {
 
             <FormButton 
                 buttonTitle="Sign In"
-                // onPress={() => navigation.navigate('Home')} 
-                onPress={() => {
-                    fetch('http://192.168.43.219:8080/login/user/post', {
-                    //fetch('http://localhost:8080/login/user/post', {
-                        method: 'POST',
-                        headers: {'Content-Type': 'application/json'},
-                        body: JSON.stringify({
-                            email: "sn@gmail.com",
-                            password: "hopsd"      
-                        })
-                    });
-                    fetch('http://192.168.43.219:8080/login/user/response')
-                        .then((response) => response.json() ,console.log("response.json"))
-                        .then((json) => {
-                            console.log("json");
-                          })
-                          .catch((error) => {
-                            console.error(error);
-                          });
-                    }
-                }
+                onPress={() => navigation.navigate('Home')} 
+                // onPress={() => {
+                //     fetch('http://192.168.43.219:8080/login/user/post', {
+                //     //fetch('http://localhost:8080/login/user/post', {
+                //         method: 'POST',
+                //         headers: {'Content-Type': 'application/json'},
+                //         body: JSON.stringify({
+                //             email: "sn@gmail.com",
+                //             password: "hopsd"      
+                //         })
+                //     });
+                //     fetch('http://192.168.43.219:8080/login/user/response')
+                //         .then((response) => response.json() ,console.log("response.json"))
+                //         .then((json) => {
+                //             console.log("json");
+                //           })
+                //           .catch((error) => {
+                //             console.error(error);
+                //           });
+                //     }
+                // }
                 
             />
 
@@ -84,7 +84,7 @@ export default Login;
 const styles = StyleSheet.create({
     container: {
         backgroundColor: '#edc7b7',
-        flex: 1,
+        flex: 1, 
         justifyContent: 'center',
         alignItems: 'center',
         padding: 20,
