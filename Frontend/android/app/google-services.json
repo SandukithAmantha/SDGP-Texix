@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "227455818481",
+    "project_id": "kiddo-check-c1530",
+    "storage_bucket": "kiddo-check-c1530.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:227455818481:android:f12c1e5bcd021d69002750",
+        "android_client_info": {
+          "package_name": "com.firebase.android"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "227455818481-9nht3ei2ta8sgk791d4ghndmolojhn3r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCUJdYp7ZTVCzs8c0bOK-Dm_JFq4nAGAto"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "227455818481-9nht3ei2ta8sgk791d4ghndmolojhn3r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
