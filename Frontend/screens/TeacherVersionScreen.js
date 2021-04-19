@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Text, View,TextInput,Image,Button, TouchableOpacity, StyleSheet, Alert, CameraRoll } from 'react-native';
 import FormButton from '../components/FormButton';
-import * as ImagePicker from 'expo-image-picker';
-import * as Permissions from 'expo-permissions';
-
+// import * as ImagePicker from 'expo-image-picker';
+// import * as Permissions from 'expo-permissions';
+import storage from '@react-native-firebase/storage';
 
 //Method for pick image fom gallery
 const pickFromGallery = async ()=>{
@@ -39,6 +39,9 @@ const pickFromCamera = async ()=>{
 
 
 const TeacherVersionScreen = ({navigation}) => {
+    const [image, setImage] = useState(null);
+    const [uploading, setUploading] = useState(false);
+    const [transferred, setTransferred] = useState(0);
     return(
         <View style={styles.container}>
             <Text style={styles.headerText}>Teacher Version</Text>
@@ -56,7 +59,36 @@ const TeacherVersionScreen = ({navigation}) => {
             </Button>
             <FormButton 
                 buttonTitle="Cam" 
-                onPress={() =>pickFromCamera}
+                //onPress={() =>pickFromCamera}
+                onPress={() => async () => {
+                    console.log("Line 64")
+                    const { uri } = image;
+                    const filename = uri.substring(uri.lastIndexOf('/') + 1);
+                    const uploadUri = Platform.OS === 'ios' ? uri.replace('file://', '') : uri;
+                    setUploading(true);
+                    setTransferred(0);
+                    const task = storage()
+                      .ref(filename)
+                      .putFile(uploadUri);
+                    // set progress state
+                    // task.on('state_changed', snapshot => {
+                    //   setTransferred(
+                    //     Math.round(snapshot.bytesTransferred / snapshot.totalBytes) * 10000
+                    //   );
+                    // });
+                    try {
+                      await task;
+                    } catch (e) {
+                      console.error(e);
+                    }
+                    setUploading(false);
+                    // Alert.alert(
+                    //   'Photo uploaded!',
+                    //   'Your photo has been uploaded to Firebase Cloud Storage!'
+                    // );
+                    setImage(null);
+                  }
+                } 
                  
             />
             
