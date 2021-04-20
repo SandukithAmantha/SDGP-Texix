@@ -23,14 +23,14 @@ import weakref
 
 
 
-path = 'originalData'
+path = "SinhalaDataSet"
 pathLabels = 'labels.csv'
 testRatio = 0.2
 validationRatio = 0.2
 imageDimensions = (32, 32, 3)
 
 batchSizeVal=50
-epochsVal=5
+epochsVal=2
 stepsPerEpoch=200
 
 
@@ -56,9 +56,11 @@ for x in range(0, noOfClasses):
 
     print(count, end=" ")
     count += 1
+
 print("Total Images in image List = ", len(images))
 print("Total IDS in classNo List = ", len(classNo))
 # print(len(classNo))
+
 
 
 images = np.array(images)
@@ -185,7 +187,4 @@ model.summary()
 print(x_train.shape)
 print(x_train[30].shape)
 
-# img = preProcessing(x_train[30])
-# # img = cv2.resize(img, (300, 300))
-# # cv2.imshow("PreProcessedImage",img)
-# # cv2.waitKey(0)
+
