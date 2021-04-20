@@ -65,21 +65,21 @@ const Signup = ({navigation}) => {
 
             <FormButton 
                 buttonTitle="Sign Up"
-                //onPress={() => navigation.navigate('Home')}  
-                onPress={() =>
-                    fetch('http://192.168.43.219:8080/register/user/post', {
-                    //fetch('http://localhost:8080/register/user/post', {
-                        method: 'POST',
-                        headers: {'Content-Type': 'application/json'},
-                        body: JSON.stringify({
-                            fName: "Shane2",
-                            lName: "Pra2",
-                            email: "Sh2a@gami",
-                            password: "shane7933",          
-                            userType: 1
-                        })
-                    })
-                }
+                onPress={() => navigation.navigate('Home')}  
+                // onPress={() =>
+                //     fetch('http://192.168.43.219:8080/register/user/post', {
+                //     //fetch('http://localhost:8080/register/user/post', {
+                //         method: 'POST',
+                //         headers: {'Content-Type': 'application/json'},
+                //         body: JSON.stringify({
+                //             fName: "Shane2",
+                //             lName: "Pra2",
+                //             email: "Sh2a@gami",
+                //             password: "shane7933",          
+                //             userType: 1
+                //         })
+                //     })
+                // }
             />
             {/* console.log("localhost:8080/register/user/post"); */}
             <View style={styles.textPrivate}>
