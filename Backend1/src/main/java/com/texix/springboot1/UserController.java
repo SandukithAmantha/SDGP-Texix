@@ -1,14 +1,27 @@
 package com.texix.springboot1;
 
+import javax.imageio.ImageIO;
 import javax.sql.DataSource;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.*;
 
+import org.apache.commons.io.FileUtils;
+import org.apache.tomcat.util.http.fileupload.IOUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.*;
+import org.springframework.web.bind.annotation.*;
+import org.apache.commons.io.FilenameUtils;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.awt.image.BufferedImage;
+import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.Base64;
 import java.util.List;
 
 
-@CrossOrigin(origins = {"http://192.168.43.219:19000/" })
+@CrossOrigin(origins = {"http://192.168.43.219:19000/", "http://localhost:8000/" })
+//@CrossOrigin(origins = {"http://localhost:8000/" })
 
 @RestController
 //@RequestMapping("register/user")
@@ -45,4 +58,37 @@ public class UserController {
     public List<User> getAllUser() {
         return userService.getAllUser();
     }
+
+
+    @RequestMapping(value = "/imageToPy", method = RequestMethod.GET)
+    public String decoder() throws Exception {
+        String imagePath = "src/main/resources/image.png";
+        String base64String = "";
+        File file = new File(imagePath);
+        try (FileInputStream imageFile = new FileInputStream(file)) {
+            // Reading a Image file from file system
+            byte imageData[] = new byte[(int) file.length()];
+            imageFile.read(imageData);
+            base64String = Base64.getEncoder().encodeToString(imageData);
+        } catch (FileNotFoundException e) {
+            System.out.println("Image not found" + e);
+        } catch (IOException ioe) {
+            System.out.println("Exception while reading the Image " + ioe);
+        }
+
+        System.out.println("Base64ImageString = " + base64String);
+        return base64String;
+
+    }
+
+    @RequestMapping(path = "/getResponsePy", produces = "application/json; charset=UTF-8", method = RequestMethod.GET)
+    @ResponseBody
+    public void findCities() {
+
+    }
+
+
+
+
+    
 }
