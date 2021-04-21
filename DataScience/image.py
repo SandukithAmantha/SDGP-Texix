@@ -1,17 +1,28 @@
 import requests
-import responses
 import base64
 
 from PIL import Image
 from io import BytesIO
 
-string = requests.get("http://localhost:8080/imageToPy")
-print(string.text)
 
-im = Image.open(BytesIO(base64.b64decode(string.text)))
-im.save('encodedImg.png', 'PNG')
+# get the image from the backend
+def getImage():
+    string = requests.get("http://localhost:8080/imageToPy")
+    # check whether the image pass or not
+    if string.status_code == 200:
+        print('Image pass Successfully!')
+    else:
+        print('Image Not pass.')
 
-# responses.add(responses.Response(method='GET', url='http://localhost:8080/getResponsePy'))
-responses.add(responses.GET,
-              'http://localhost:8080/getResponsePy',
-              headers={'content-type': 'application/json'})
+    image = Image.open(BytesIO(base64.b64decode(string.text)))
+    image.save('encodedImg.png', 'PNG')
+
+
+# pass the value of the image to the backend
+def returnImageValue(string):
+    res = requests.get('http://localhost:8080/getResponsePy', params={'iName': string})
+    # check whether the String pass or not
+    if res.status_code == 200:
+        print('Data pass Successfully!')
+    else:
+        print('Data Not pass.')
