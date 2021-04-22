@@ -34,6 +34,22 @@ const StudentVersionScreen = ({navigation}) => {
         }
     };
 
+    const takePhoto = async () => {
+        let result = await ImagePicker.launchCameraAsync({
+            mediaTypes: ImagePicker.MediaTypeOptions.All,
+            allowsEditing: true,
+            aspect: [4, 3],
+            quality: 1,
+        });
+
+
+        console.log(result);
+
+        if (!result.cancelled) {
+            setImage(result.uri);
+        }
+    };
+
 
     return(
         <View style={styles.container}>
@@ -45,8 +61,9 @@ const StudentVersionScreen = ({navigation}) => {
 
             <Text style={styles.headerText}>Student Version</Text>
 
-            <FormButton  buttonTitle="Pick an Image" onPress={pickImage} /> 
-            {image && <Image source={{uri: image}}  style={{width: 200, height: 200, marginTop: 20}} />} 
+            <FormButton  buttonTitle="Take a photo" onPress={takePhoto} />  
+            <FormButton  buttonTitle="Choose an Image" onPress={pickImage} /> 
+            {image && <Image source={{uri: image}} style={{width: 200, height: 200, marginTop: 20, marginBottom: 20}} />}
 
             <TouchableOpacity 
                 style={styles.showMistakes}

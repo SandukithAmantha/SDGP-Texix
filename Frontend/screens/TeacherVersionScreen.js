@@ -3,6 +3,8 @@ import { Text, View,TextInput,Image,Button, TouchableOpacity, StyleSheet, } from
 import FormButton from '../components/FormButton';
 import * as ImagePicker from 'expo-image-picker';
 import { useState, useEffect } from 'react';
+import Animated from 'react-native-reanimated';
+import BottomSheet from 'reanimated-bottom-sheet';
 
 const TeacherVersionScreen = ({navigation}) => {
 
@@ -27,12 +29,31 @@ const TeacherVersionScreen = ({navigation}) => {
             quality: 1,
         });
 
+
         console.log(result);
 
         if (!result.cancelled) {
             setImage(result.uri);
         }
     };
+
+    const takePhoto = async () => {
+        let result = await ImagePicker.launchCameraAsync({
+            mediaTypes: ImagePicker.MediaTypeOptions.All,
+            allowsEditing: true,
+            aspect: [4, 3],
+            quality: 1,
+        });
+
+
+        console.log(result);
+
+        if (!result.cancelled) {
+            setImage(result.uri);
+        }
+    };
+
+    
 
 
     return(
@@ -45,8 +66,10 @@ const TeacherVersionScreen = ({navigation}) => {
 
             <Text style={styles.headerText}>Teacher Version</Text>
 
-            <FormButton  buttonTitle="Pick an Image" onPress={pickImage} /> 
-            {image && <Image source={{uri: image}} style={{width: 200, height: 200, marginTop: 20}} />} 
+            <FormButton  buttonTitle="Take a photo" onPress={takePhoto} />  
+            <FormButton  buttonTitle="Choose an Image" onPress={pickImage} /> 
+            {image && <Image source={{uri: image}} style={{width: 200, height: 200, marginTop: 20, marginBottom: 20}} />}
+            
 
             <TouchableOpacity 
                 style={styles.showMistakes}
@@ -95,6 +118,29 @@ const styles = StyleSheet.create({
         width: 165,
         resizeMode: 'cover',
         marginBottom: 5,
+    },
+
+    header: {
+        backgroundColor: '#FFFFFF',
+        shadowColor: '#333333',
+        shadowOffset: {width: -1, header: -3},
+        shadowRadius: 2,
+        shadowOpacity: 0.4,
+        paddingTop: 20,
+        borderTopLeftRadius: 20,
+        borderTopRightRadius: 20,
+    },
+
+    pannelHeader: {
+        alignItems: 'center'
+    },
+    
+    pannelHandle: {
+        width: 40,
+        height: 8,
+        borderRadius: 4,
+        backgroundColor: '#00000040',
+        marginBottom: 30,
     },
 
     
