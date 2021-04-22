@@ -21,8 +21,6 @@ import dill
 import weakref
 
 
-
-
 path = "SinhalaDataSet"
 pathLabels = 'labels.csv'
 testRatio = 0.2
@@ -30,8 +28,8 @@ validationRatio = 0.2
 imageDimensions = (32, 32, 3)
 
 batchSizeVal=50
-epochsVal=2
-stepsPerEpoch=200
+epochsVal=20
+stepsPerEpoch=300
 
 
 count = 0
