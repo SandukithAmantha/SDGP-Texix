@@ -3,8 +3,13 @@ import { Text, View,TextInput,Image,Button, TouchableOpacity, StyleSheet, } from
 import FormButton from '../components/FormButton';
 import * as ImagePicker from 'expo-image-picker';
 import { useState, useEffect } from 'react';
+<<<<<<< Updated upstream
 import Animated from 'react-native-reanimated';
 import BottomSheet from 'reanimated-bottom-sheet';
+=======
+import ImgToBase64 from 'react-native-image-base64';
+//import RNFS from 'react-native-fs';
+>>>>>>> Stashed changes
 
 const TeacherVersionScreen = ({navigation}) => {
 
@@ -22,11 +27,32 @@ const TeacherVersionScreen = ({navigation}) => {
     }, []);
 
     const pickImage = async () => {
+
+       
+
+    // RNFS.readFile(this.state.imagePath, 'base64')
+    // .then(res =>{
+    //  console.log(res);
+    // });
+    //const encodeImg = ImgToBase64.getBase64String('../assets/piano.jpg')
+    //.then(base64String => doSomethingWith(base64String))
+    //  .then(console.log(encodeImg))
+    //.catch(err => doSomethingWith(err));
+    //  .catch(err => console.log(err));    
+    //     console.log("hola");
+    //     const encode =  ImgToBase64.getBase64String('file:///D:/IIT/2ND YR/SDGP/KIDDO-CHECK/Frontend/assets/piano.jpg')
+    //    .then(base64String => console.log(base64String))
+    //    .catch(err => console.log(err));
+    //     console.log(encode);
+    //     alert(encode);
+
         let result = await ImagePicker.launchImageLibraryAsync({
             mediaTypes: ImagePicker.MediaTypeOptions.All,
             allowsEditing: true,
             aspect: [4, 3],
             quality: 1,
+
+    
         });
 
 
@@ -66,10 +92,16 @@ const TeacherVersionScreen = ({navigation}) => {
 
             <Text style={styles.headerText}>Teacher Version</Text>
 
+<<<<<<< Updated upstream
             <FormButton  buttonTitle="Take a photo" onPress={takePhoto} />  
             <FormButton  buttonTitle="Choose an Image" onPress={pickImage} /> 
             {image && <Image source={{uri: image}} style={{width: 200, height: 200, marginTop: 20, marginBottom: 20}} />}
             
+=======
+            <FormButton  buttonTitle="Pick an Image" onPress={pickImage} /> 
+            
+            {image && <Image source={{uri: image}} style={{width: 200, height: 200, marginTop: 20}} />} 
+>>>>>>> Stashed changes
 
             <TouchableOpacity 
                 style={styles.showMistakes}
@@ -88,6 +120,9 @@ const TeacherVersionScreen = ({navigation}) => {
         </View>
     );
 }
+
+
+
 
 export default TeacherVersionScreen;
 
