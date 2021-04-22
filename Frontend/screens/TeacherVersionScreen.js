@@ -48,6 +48,12 @@ const TeacherVersionScreen = ({navigation}) => {
             <FormButton  buttonTitle="Pick an Image" onPress={pickImage} /> 
             {image && <Image source={{uri: image}} style={{width: 200, height: 200, marginTop: 20}} />} 
 
+            <TouchableOpacity 
+                style={styles.showMistakes}
+                onPress={() => navigation.navigate('Error')} >
+                    <Text style={styles.mistakesText}>Check Mistakes</Text>
+                </TouchableOpacity>
+
 
             <TouchableOpacity
                 style={styles.navigateText}  
