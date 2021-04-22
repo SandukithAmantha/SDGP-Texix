@@ -19,6 +19,8 @@ public class UserController {
 
     private final UserService userService;
     private DataSource dataSource;
+    public String encodeImage;
+    public String imageValue;
 
     @Autowired
     public UserController(UserService userService) {
@@ -50,24 +52,30 @@ public class UserController {
     @RequestMapping(value = "/imageToPy", method = RequestMethod.GET)
     public String decoder() throws Exception {
         //image path
-        String imagePath = "src/main/resources/image.png";
-        String base64String = "";
-        File file = new File(imagePath);
-        try (FileInputStream imageFile = new FileInputStream(file)) {
-            // Reading a Image file from file system
-            byte imageData[] = new byte[(int) file.length()];
-            imageFile.read(imageData);
-            //encode the image in base64
-            base64String = Base64.getEncoder().encodeToString(imageData);
-        } catch (FileNotFoundException e) {
-            System.out.println("Image not found" + e);
-        } catch (IOException ioe) {
-            System.out.println("Exception while reading the Image " + ioe);
-        }
+//        String imagePath = "src/main/resources/image.png";
+//        String base64String = "";
+//        File file = new File(imagePath);
+//        try (FileInputStream imageFile = new FileInputStream(file)) {
+//            // Reading a Image file from file system
+//            byte imageData[] = new byte[(int) file.length()];
+//            imageFile.read(imageData);
+//            //encode the image in base64
+//            base64String = Base64.getEncoder().encodeToString(imageData);
+//        } catch (FileNotFoundException e) {
+//            System.out.println("Image not found" + e);
+//        } catch (IOException ioe) {
+//            System.out.println("Exception while reading the Image " + ioe);
+//        }
+//
+//        System.out.println("Base64ImageString = " + base64String);
+//        return base64String;
+          return encodeImage;
+    }
 
-        System.out.println("Base64ImageString = " + base64String);
-        return base64String;
-
+    @RequestMapping(value="/encodedString", method=RequestMethod.POST)
+    public void getEncodedString(Image image) throws Exception {
+        encodeImage = image.getImage();
+        decoder();
     }
 
     //get the string from the datascience path through the get method
@@ -75,9 +83,8 @@ public class UserController {
     @ResponseBody
     public void getLetter(@RequestParam String iName) {
         System.out.println(iName);
+        imageValue = iName;
     }
-
-
 
 
     
