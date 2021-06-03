@@ -49,13 +49,6 @@ public class UserController {
         return userService.getAllUser();
     }
 
-    @RequestMapping(value="/encodedString", method=RequestMethod.POST)
-    public void getEncodedString(@RequestBody Image image) throws Exception {
-        encodeImage = image.getImage();
-        System.out.println("getEncodedString() - "+encodeImage);
-        //decoder();
-    }
-
     @RequestMapping(value = "/imageToPy", method = RequestMethod.GET)
     public String decoder() throws Exception {
         //image path
@@ -79,6 +72,12 @@ public class UserController {
           return encodeImage;
     }
 
+    @RequestMapping(value="/encodedString", method=RequestMethod.POST)
+    public void getEncodedString(Image image) throws Exception {
+        encodeImage = image.getImage();
+        decoder();
+    }
+
     //get the string from the datascience path through the get method
     @RequestMapping(path = "/getResponsePy", method = RequestMethod.GET)
     @ResponseBody
@@ -86,28 +85,6 @@ public class UserController {
         System.out.println(iName);
         imageValue = iName;
     }
-
-//    @RequestMapping(path = "/returnResponse", method = RequestMethod.GET)
-//    @ResponseBody
-//    public LetterName returnLetter() {
-//        LetterName letterName = new LetterName(imageValue);
-//        System.out.printf(letterName.toString());
-//        return letterName;
-//    }
-
-    //@RequestMapping(path = "/returnResponse", method = RequestMethod.GET)
-    @GetMapping(path = "/returnResponse")
-    ResponseEntity<String> hello() {
-        LetterName letterName = new LetterName(imageValue);
-        System.out.println(letterName.toString());
-        return new ResponseEntity<>(imageValue, HttpStatus.OK);
-    }
-
-//
-//    @RequestMapping("/{someID}")
-//    public @ResponseBody int getAttr(@PathVariable(value="someID") String id,
-//                                     @RequestParam String someAttr) {
-//    }
 
 
     
