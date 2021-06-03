@@ -3,6 +3,7 @@ import { Text, View,TextInput,Image,Button, TouchableOpacity, StyleSheet, } from
 import FormButton from '../components/FormButton';
 import * as ImagePicker from 'expo-image-picker';
 import { useState, useEffect } from 'react';
+import { FileSystem } from 'react-native-unimodules';
 
 const StudentVersionScreen = ({navigation}) => {
 
@@ -25,9 +26,20 @@ const StudentVersionScreen = ({navigation}) => {
             allowsEditing: true,
             aspect: [4, 3],
             quality: 1,
-        });
+        }); 
 
         console.log(result);
+       
+        const base64 = await FileSystem.readAsStringAsync("file:///data/user/0/host.exp.exponent/cache/ExperienceData/UNVERIFIED-192.168.8.101-KiddoCheck/ImagePicker/69e00117-3d99-4b27-a271-0d8addc06a16.mp4", { encoding: 'base64' });
+        console.log(base64)
+        fetch('http://192.168.8.101:8080/register/user/post', {
+                    //fetch('http://localhost:8080/register/user/post', {
+                        method: 'POST',
+                        headers: {'Content-Type': 'application/json'},
+                        body: JSON.stringify({
+                            img: base64
+                        })
+                    })
 
         if (!result.cancelled) {
             setImage(result.uri);
